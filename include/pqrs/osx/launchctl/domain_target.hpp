@@ -17,7 +17,7 @@ struct domain_target : type_safe::strong_typedef<domain_target, std::string>,
   using strong_typedef::strong_typedef;
 };
 
-std::ostream& operator<<(std::ostream& os, const domain_target& value) {
+inline std::ostream& operator<<(std::ostream& os, const domain_target& value) {
   return os << type_safe::get(value);
 }
 
