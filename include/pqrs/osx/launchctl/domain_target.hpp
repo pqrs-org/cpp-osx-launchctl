@@ -25,7 +25,7 @@ inline domain_target make_system_domain_target(void) {
   return domain_target("system/");
 }
 
-inline domain_target make_gui_domain_target(uid_t uid) {
+inline domain_target make_gui_domain_target(uid_t uid = getuid()) {
   return domain_target((std::stringstream() << "gui/" << uid << "/").str());
 }
 } // namespace launchctl

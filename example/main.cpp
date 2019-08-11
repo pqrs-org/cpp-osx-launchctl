@@ -2,7 +2,7 @@
 
 int main(void) {
   auto system_domain_target = pqrs::osx::launchctl::make_system_domain_target();
-  auto gui_domain_target = pqrs::osx::launchctl::make_gui_domain_target(501);
+  auto gui_domain_target = pqrs::osx::launchctl::make_gui_domain_target();
 
   pqrs::osx::launchctl::service_name service_name("org.pqrs.example");
 
