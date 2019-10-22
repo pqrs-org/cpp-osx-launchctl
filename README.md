@@ -1,4 +1,4 @@
-[![Build Status](https://travis-ci.com/pqrs-org/cpp-osx-launchctl.svg?branch=master)](https://travis-ci.com/pqrs-org/cpp-osx-launchctl)
+[![Build Status](https://github.com/pqrs-org/cpp-osx-launchctl/workflows/CI/badge.svg)](https://github.com/pqrs-org/cpp-osx-launchctl/actions)
 [![License](https://img.shields.io/badge/license-Boost%20Software%20License-blue.svg)](https://github.com/pqrs-org/cpp-osx-launchctl/blob/master/LICENSE.md)
 
 # cpp-osx-launchctl
