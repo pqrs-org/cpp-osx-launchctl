@@ -13,6 +13,5 @@ project (test)
 
 add_executable(
   test
-  launchctl_test.cpp
   test.cpp
 )
