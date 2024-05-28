@@ -28,5 +28,28 @@ int main(void) {
            pqrs::osx::launchctl::service_target("gui/501/org.pqrs.example"));
   };
 
+  "pid"_test = [] {
+    auto time_source = std::make_shared<pqrs::dispatcher::hardware_time_source>();
+    auto dispatcher = std::make_shared<pqrs::dispatcher::dispatcher>(time_source);
+    auto system_domain_target = pqrs::osx::launchctl::make_system_domain_target();
+
+    {
+      pqrs::osx::launchctl::service_name service_name("com.apple.coreservicesd");
+      expect(std::nullopt != pqrs::osx::launchctl::get_pid(dispatcher,
+                                                           system_domain_target,
+                                                           service_name));
+    }
+
+    {
+      pqrs::osx::launchctl::service_name service_name("org.pqrs.example");
+      expect(std::nullopt == pqrs::osx::launchctl::get_pid(dispatcher,
+                                                           system_domain_target,
+                                                           service_name));
+    }
+
+    dispatcher->terminate();
+    dispatcher = nullptr;
+  };
+
   return 0;
 }

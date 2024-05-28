@@ -1,1 +1,3 @@
 foonathan/type_safe
+pqrs-org/cpp-process
+pqrs-org/cpp-string
