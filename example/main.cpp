@@ -22,9 +22,9 @@ int main(void) {
 
   {
     pqrs::osx::launchctl::service_name service_name("com.apple.coreservicesd");
-    if (auto pid = pqrs::osx::launchctl::get_pid(dispatcher,
-                                                 system_domain_target,
-                                                 service_name)) {
+    if (auto pid = pqrs::osx::launchctl::find_pid(dispatcher,
+                                                  system_domain_target,
+                                                  service_name)) {
       std::cout << service_name << " pid:" << *pid << std::endl;
     }
   }

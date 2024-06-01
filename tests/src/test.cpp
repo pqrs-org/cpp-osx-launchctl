@@ -35,16 +35,16 @@ int main(void) {
 
     {
       pqrs::osx::launchctl::service_name service_name("com.apple.coreservicesd");
-      expect(std::nullopt != pqrs::osx::launchctl::get_pid(dispatcher,
-                                                           system_domain_target,
-                                                           service_name));
+      expect(std::nullopt != pqrs::osx::launchctl::find_pid(dispatcher,
+                                                            system_domain_target,
+                                                            service_name));
     }
 
     {
       pqrs::osx::launchctl::service_name service_name("org.pqrs.example");
-      expect(std::nullopt == pqrs::osx::launchctl::get_pid(dispatcher,
-                                                           system_domain_target,
-                                                           service_name));
+      expect(std::nullopt == pqrs::osx::launchctl::find_pid(dispatcher,
+                                                            system_domain_target,
+                                                            service_name));
     }
 
     dispatcher->terminate();
