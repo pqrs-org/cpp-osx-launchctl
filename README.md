@@ -9,19 +9,10 @@ A utility for `/bin/launchctl`.
 
 cpp-osx-launchctl depends the following classes.
 
+- [pqrs::process](https://github.com/pqrs-org/cpp-process)
+- [pqrs::string](https://github.com/pqrs-org/cpp-string)
 - [type_safe](https://github.com/foonathan/type_safe)
 
 ## Install
 
-### Using package manager
-
-You can install `include/pqrs` by using [cget](https://github.com/pfultz2/cget).
-
-```shell
-cget install pqrs-org/cget-recipes
-cget install pqrs-org/cpp-osx-launchctl
-```
-
-### Manual install
-
-Copy `include/pqrs` directory into your include directory.
+Copy `include/pqrs` and `vendor/vendor/include` directories into your include directory.
