@@ -97,7 +97,7 @@ inline std::optional<pid_t> find_pid(const domain_target& domain_target,
   while (std::getline(ss, line)) {
     pqrs::string::trim(line);
     std::string_view pattern = "pid = ";
-    if (pqrs::string::starts_with(line, pattern)) {
+    if (line.starts_with(pattern)) {
       line = line.substr(pattern.size());
       return pid_t(std::stoi(line));
     }
