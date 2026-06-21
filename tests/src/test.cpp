@@ -1,7 +1,7 @@
 #include <boost/ut.hpp>
 #include <pqrs/osx/launchctl.hpp>
 
-int main(void) {
+int main() {
   using namespace boost::ut;
   using namespace boost::ut::literals;
 
@@ -29,6 +29,15 @@ int main(void) {
   };
 
   "pid"_test = [] {
+    expect(std::optional<pid_t>(12345) ==
+           pqrs::osx::launchctl::parse_pid("domain = system\n  pid = 12345\n"));
+
+    expect(std::optional<pid_t>(67890) ==
+           pqrs::osx::launchctl::parse_pid("  pid = 67890  \nstate = running\n"));
+
+    expect(std::nullopt ==
+           pqrs::osx::launchctl::parse_pid("state = waiting\n"));
+
     auto system_domain_target = pqrs::osx::launchctl::make_system_domain_target();
 
     {

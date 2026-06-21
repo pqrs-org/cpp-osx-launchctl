@@ -1,6 +1,6 @@
 #include <pqrs/osx/launchctl.hpp>
 
-int main(void) {
+int main() {
   auto system_domain_target = pqrs::osx::launchctl::make_system_domain_target();
   auto gui_domain_target = pqrs::osx::launchctl::make_gui_domain_target();
 
