@@ -12,9 +12,8 @@ namespace pqrs::process {
 class execute {
 public:
   execute(const std::vector<std::string>& argv)
-      : time_source_(std::make_shared<pqrs::dispatcher::hardware_time_source>()),
-        dispatcher_(std::make_shared<dispatcher::dispatcher>(time_source_)),
-        process_(dispatcher_, argv) {
+      : process_(dispatcher_,
+                 argv) {
     // `process_.wait()` joins the polling thread, but the signal handlers are
     // invoked on the dispatcher thread. Use `wait` to ensure that the enqueued
     // `stdout_received`, `stderr_received`, `run_failed`, and `exited` handlers
@@ -73,8 +72,9 @@ public:
   }
 
 private:
-  std::shared_ptr<dispatcher::hardware_time_source> time_source_;
-  std::shared_ptr<dispatcher::dispatcher> dispatcher_;
+  std::shared_ptr<dispatcher::hardware_time_source> time_source_{std::make_shared<dispatcher::hardware_time_source>()};
+  std::shared_ptr<dispatcher::dispatcher> dispatcher_{std::make_shared<dispatcher::dispatcher>(time_source_)};
+
   process process_;
 
   std::string stdout_;
